@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arena 1v1 - Mope.io</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="instructions">
+    <p>Haz CLIC para morder</p>
+    <p>Mantén CLIC para sprint</p>
+    <p>Mueve el ratón para controlar</p>
+  </div>
+  
+  <canvas id="game" width="400" height="400"></canvas>
+  
+  <div id="cooldown-indicator" class="cooldown-indicator">
+    <span id="cooldown-text">LISTO</span>
+  </div>
+  
+  <!-- Cursor personalizado -->
+  <div id="custom-cursor"></div>
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+  
+  <script>
+    // Cursor personalizado
+    const cursor = document.getElementById('custom-cursor');
+    
+    document.addEventListener('mousemove', e => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+    
+    document.addEventListener('mousedown', () => {
+      cursor.style.backgroundColor = '#0f0';
+      cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    });
+    
+    document.addEventListener('mouseup', () => {
+      cursor.style.backgroundColor = '';
+      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+  </script>
+</body>
+</html>
